@@ -1,0 +1,4 @@
+Line 1 [In one(two(three))].
+Line 2 [Wrong line(this (these(those)]).
+Nothing here (....)
+check true (asda)asd

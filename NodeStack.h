@@ -1,12 +1,13 @@
 #include <iostream>
 
-typedef int ElementType;
+typedef char ElementType;
 struct Node {
     ElementType Element;
     Node* Prev;
 };
 typedef Node* Position;
 typedef Position Stack;
+typedef Stack List;
 //declarations
 void MAKENULL_STACK(Stack &S);
 bool TOP(Stack S, ElementType &X);
@@ -16,7 +17,7 @@ bool EMPTY_STACK(Stack &S);
 //definitions
 void MAKENULL_STACK(Stack &S) {
     S = new Node();
-    S->Element = 0;
+    S->Element = ' ';
     S->Prev = NULL;
 }
 bool TOP(Stack S, ElementType &X) {
