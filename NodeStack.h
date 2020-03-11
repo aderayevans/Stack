@@ -1,6 +1,6 @@
 #include <iostream>
 
-typedef char ElementType;
+typedef std::string ElementType;
 struct Node {
     ElementType Element;
     Node* Prev;
@@ -17,7 +17,7 @@ bool EMPTY_STACK(Stack &S);
 //definitions
 void MAKENULL_STACK(Stack &S) {
     S = new Node();
-    S->Element = ' ';
+    S->Element = " ";
     S->Prev = NULL;
 }
 bool TOP(Stack S, ElementType &X) {
