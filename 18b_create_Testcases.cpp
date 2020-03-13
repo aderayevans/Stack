@@ -48,48 +48,43 @@ bool readFile(std::vector<std::string> &vt) {
     }
 }
 bool check(std::string str) {
-    Stack S;
-    MAKENULL_STACK(S);
-    std::stringstream ss(str);
-    char ch;
-    int circle_time = 0, sharp_time = 0, square_time = 0;
-    int circle = 0, sharp = 0, square = 0;
-    while (ss >> ch) {
-        PUSH(S, ch);
-    }
-    while (!EMPTY_STACK(S))
+    Stack S2;
+    MAKENULL_STACK(S2);
+    for (int i = str.size() - 1; i >= 0; i--)
     {
-        if (circle_time == 0 && S->Element == '(') return false;
-        if (sharp_time == 0 && S->Element == '{') return false;
-        if (square_time == 0 && S->Element == '[') return false;
-        switch (S->Element) {
+        switch (str[i]) {
             case '}':
-                sharp_time++;
-                sharp++;
+                PUSH(S2, str[i]);
                 break;
             case '{':
-                sharp--;
-                break;
+                if (S2->Element == '}') {
+                    POP(S2);
+                    break;
+                }
+                else return false;
             case ')':
-                circle_time++;
-                circle++;
+                PUSH(S2, str[i]);
                 break;
             case '(':
-                circle--;
-                break;
+                if (S2->Element == ')') {
+                    POP(S2);
+                    break;
+                }
+                else return false;
             case ']':
-                square_time++;
-                square++;
+                PUSH(S2, str[i]);
                 break;
             case '[':
-                square--;
-                break;
+                if (S2->Element == ']') {
+                    POP(S2);
+                    break;
+                }
+                else return false;
             default:
                 break;
         }
-        POP(S);
     }
-    if (circle == sharp == square == 0) return true;
+    if (EMPTY_STACK(S2)) return true;
     else return false;
 }
 int main() {
