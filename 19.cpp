@@ -1,18 +1,17 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include "NodeStack.h"
+#include "DynamicBuffer.h"
 
 using namespace std;
 
-bool readFile(Stack &S) {
+bool readFile(Queue &Q) {
     ifstream infile ("19.txt");
     string line;
     if (infile) {
         while (getline(infile, line)) {
             //cout << line << endl;
-            PUSH(S, line);
-            cout << S->Element << endl;
+            enQueue(line, Q);
         }
         infile.close();
         return true;
@@ -22,8 +21,15 @@ bool readFile(Stack &S) {
         return false;
     }
 }
+void printFile(Queue Q) {
+    while(!empty_Queue(Q)) {
+        cout << getFront(Q) << endl;
+        deQueue(Q);
+    }
+}
 int main() {
-    Stack S;
-    MAKENULL_STACK(S);
-    readFile(S);
+    Queue Q;
+    makeNull_Queue(Q);
+    readFile(Q);
+    printFile(Q);
 }
