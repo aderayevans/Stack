@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 typedef string ElementType;
 struct Node {
@@ -11,7 +12,7 @@ struct Queue {
     Position Rear;
 };
 void makeNull_Queue(Queue &Q);
-ElementType getFront(Queue Q);
+ElementType Front(Queue Q);
 void enQueue(ElementType X, Queue &Q);
 bool deQueue(Queue &Q);
 bool empty_Queue(Queue Q);
@@ -23,7 +24,7 @@ void makeNull_Queue(Queue &Q) {
     Q.Front = Header;
     Q.Rear = Header;
 }
-ElementType getFront(Queue Q) {
+ElementType Front(Queue Q) {
     return Q.Front->Next->Element;
 }
 void enQueue(ElementType X, Queue &Q) {
